@@ -5,19 +5,16 @@ const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-let ordenado = true;
+let sorted = true;
 rl.question('', (n) => {
   rl.question('', (numbersString) => {
     const numbers = numbersString.split(' ').map(number => Number(number));
-    if (numbers.length > 1) {
-      for(let i = 0; i < numbers.length - 1; i++) {
-        if (numbers[i] > numbers[i+1]) {
-          ordenado = false;
-          break;
-        }
-      }
+    let index = 0;
+    while(index < n - 1 && sorted) {
+      sorted = numbers[index] <= numbers[index+1] 
+      index++;
     }
-    console.log(ordenado ? 'Ordenado' : 'Desordenado');
+    console.log(sorted ? 'Ordenado' : 'Desordenado');
     rl.close();
   });
 });
